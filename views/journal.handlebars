@@ -1,0 +1,265 @@
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark lighten-1 sticky-top">
+  <a class="navbar-brand" href="./journals">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item text-white pt-3">Hi <span id="userName"> Admin</span></li>
+      <li class="nav-item avatar dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <img src="https://via.placeholder.com/30" class="rounded-circle z-depth-0" alt="avatar image">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
+          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
+          <a class="dropdown-item" href="./">Logout</a> {{!-- MODAL HTML STARTS AROUND LINE 116 --}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--/.Navbar -->
+
+<!-- SIDEBAR HERE -->
+<div class="container-fluid">
+  <div class="sidenav mdb-color">
+    <div class="container-fluid mb-5">
+      <div class="font-weight-bold text-light">
+        <br><br>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-3" id="contentBody">
+    <div class="card blue-grey lighten-3" id="pageCard">
+      {{!-- row title with the button to create new row --}}
+      <div class="row">
+        <div class="col-sm-10 col-3 mx-4 my-4">
+          <div id="journal-title" class="list-group text-center">
+            <a button class="btn btn-mdb-color btn-block" id="create-journal" data-toggle="modal"
+              data-target="#addJournal-modal">ADD Journal</a>
+          </div>
+        </div>
+      </div>
+
+      {{!-- row accordion to list all journals with a the description --}}
+      <div class="row">
+        <div class="col-sm-10 col-3 mx-4">
+          <div class="list-group text-center text-white">
+            {{!-- Accordion --}}
+            <!--Accordion wrapper-->
+            <div class="accordion " id="journals-accordion" role="tablist" aria-multiselectable="true">
+
+
+              <!--/.Accordion wrapper-->
+              {{!-- End Accordion --}}
+            </div>
+          </div>
+        </div>
+
+        {{!-- modal form to add a new journal --}}
+        <div class="modal fade" id="addJournal-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+
+          <div class="modal-dialog modal-lg" role="document">
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title w-100" id="modalFaqTitle">Add a new modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="md-form mb-5">
+                  <input type="text" id="title-input" class="form-control validate">
+                  <label class="font-weight-bold" for="title-input">Title</label>
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="description-input" class="form-control validate">
+                  <label class="font-weight-bold" for="description-input">Description</label>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <button class="btn btn-deep-orange" id="save-journal"> Save Journal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark fixed-bottom">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+
+
+
+
+
+{{!-- 🤔🤔🤔🤔🤔🤔🤔🤔THIS IS WHERE I THREW ALL THE MODAL STUFF 🤔🤔🤔🤔🤔🤔🤔🤔🤔--}}
+
+
+
+<!-- Account Modal -->
+<div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-fluid" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="accountModalTitle">Account Stuff</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- INSERT ACCOUNT CHANGE STUFF HERE -->
+
+        <div class="container">
+          <!-- Extended material form grid -->
+          <form>
+            <!-- Grid row -->
+            <div class="form-row">
+              <!-- Grid column -->
+
+              <div class="col-md-6">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
+                  <label for="inputEmail4MD">Email</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="password" class="form-control" id="inputPassword4MD" placeholder="Password">
+                  <label for="inputPassword4MD">Password</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row">
+              <!-- Grid column -->
+              <div class="col-md-12">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
+                  <label for="inputAddressMD">Address</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-12">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="text" class="form-control" id="inputAddress2MD"
+                    placeholder="Apartment, studio, or floor">
+                  <label for="inputAddress2MD">Address 2</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="form-row">
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="text" class="form-control" id="inputCityMD" placeholder="New York City">
+                  <label for="inputCityMD">City</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <!-- Material input -->
+                <div class="md-form form-group">
+                  <input type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
+                  <label for="inputZipMD">Zip</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+            {{!-- <button type="submit" class="btn btn-primary btn-md">Sign in</button> --}}
+          </form>
+          <!-- Extended material form grid -->
+        </div>
+
+
+
+
+
+
+        <!-- END ACCUONT MODAL -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 Account modal end 🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 -->
+
+
+<!-- FAQ MODAL -->
+
+<!-- Central Modal large -->
+<div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="modalFaqTitle">FAQ</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>FAQ stuff here</h4>
+        <p>Q: What is this?</p>
+        <p>A: Stuff</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FAQ Modal Large END-->
+
+<script src="/assets/js/journal.js"></script>

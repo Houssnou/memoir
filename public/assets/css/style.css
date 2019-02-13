@@ -1,0 +1,126 @@
+/* I need to reoragnize this area by page first then class/id then alphabetically. ahhh */
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 0px 6px 0px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+#listedEntries {
+  padding-right: 0%; 
+}
+
+#writtenEntries {
+  padding-left: 0%;
+}
+
+#modalLoginBtn {
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 2px 4px;
+  width: 200px;
+}
+
+#registerAccountBtn {
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 2px 4px;
+  width: 200px;
+}
+
+#journal-form {
+  display: none;
+}
+
+#journalContent{
+  position: relative;
+  overflow-y: scroll;
+  height: 530px;
+}
+
+#contentBody{
+  margin-left: 11%;
+  width: 89%;
+}
+
+#pageCard{
+  height: 600px;
+}
+
+#registerArea {
+  margin-bottom: 0%;
+}
+
+#entry-card {
+  margin-left: 10%;
+  width: 95%;
+}
+#entry-form {
+  margin-bottom: 5px;
+}
+
+#entry-title {
+  margin-bottom: 5px;
+}
+
+#entry-body {
+  width: 95%;
+  margin-left: 20px;
+  resize: none;
+  border: none;
+}
+
+@media screen and (max-width: 530px) {
+  .entrySpan {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* .sidenav {
+    display: none;
+  } */
+ .container-fluid#contentBody {
+   margin: auto;
+   padding: auto;
+ }
+}
+
+
+@media screen and (max-width: 1300px) {
+
+  .container-fluid#contentBody {
+    margin: auto;
+    margin-left: 18%;
+    padding: auto;
+    width: 75%;
+  }
+}
