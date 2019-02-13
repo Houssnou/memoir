@@ -84,7 +84,7 @@ $(document).ready(() => {
 
         //set the attr entry-id to the delete icon
         //$(".fa-save").attr("entry-id", entry.id);
-        //$(".fa-trash-alt").attr("entry-id", entry.id);
+        $(".fa-trash-alt").attr("entry-id", entry.id);
 
         const entryItemSpan = $("<span class='entrySpan'>").text(entry.title).appendTo(entryItem);
 
@@ -147,19 +147,19 @@ $(document).ready(() => {
     //prevent reload
     e.preventDefault();
 
-    const entryId = $(this).data("data-entry");
+    const entryId = $(this).attr("entry-id");
 
     //confirm delete entry;
     $(document).on("click", "#confirm-delete", function (event) {
       console.log(entryId);
       //ajax call to update the entry isTrashed column
-      /* $.ajax({
+       $.ajax({
         url: "/api/entries/" + entryId,
         method: "DELETE",
       }).then(result => {
         alert("Entry deleted!");
         location.reload();
-      }); */
+      }); 
     });
   });
 
@@ -172,6 +172,7 @@ $(document).ready(() => {
     //append entry info to the buttons
     $(".fa-save").attr("entry-id", entry.id);
     $(".fa-trash-alt").attr("entry-id", entry.id);
+    $(".fa-file-pdf").data("data-entry", entry);
 
     //delete the editor
     $("#entry-div").empty();
@@ -218,6 +219,22 @@ $(document).ready(() => {
         console.error(error);
       });
     // 
-
   });
+  //event listener to create the pdf file
+  $(".fa-file-pdf").on("click", function (e) {
+    //prevent reload
+    e.preventDefault();
+    //get the entry data back as an object
+    const entry = $(this).data("data-entry");
+
+    console.log(entry);
+
+    let doc = new jsPDF();
+
+    doc.text(entry.title, 10, 10);
+    doc.text(entry.createdAt+" "+entry.updatedAt, 20, 10);
+    doc.text(entry.body, 40, 10);
+    doc.save('entry.pdf');
+  });
+
 }); //end of
