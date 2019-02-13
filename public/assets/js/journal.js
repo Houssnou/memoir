@@ -12,6 +12,8 @@ $(document).ready(() => {
       //$("#userName").text(userInfo.firstName);
       userId = userInfo.id;
       userName = userInfo.lastName;
+      //display the name of the current user
+      $("#userName").text(userName);
 
       //on load display all users journals
       $.ajax({

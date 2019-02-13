@@ -48,6 +48,9 @@ $(document).ready(() => {
     })
     .catch(err => console.log(err));
 
+  // on load show all deleted entries on modal area
+  
+
   //event listener for a click on a journal item
   $(document).on("click", ".journal", function (event) {
 

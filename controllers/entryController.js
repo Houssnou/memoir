@@ -5,18 +5,43 @@ const Op = require("sequelize").Op;
 
 
 module.exports = {
-//select all entries from the selected journal
+  //select all entries from the selected journal
   getAllEntries: (req, res) => {
     db
       .Entries
       .findAll({
         where: {
-          [Op.and] : [
-            {          
-             JournalId: req.params.journalId
+          [Op.and]: [{
+              JournalId: req.params.journalId
             },
-             { isTrashed:false}
-          ]        
+            {
+              isTrashed: false
+            }
+          ]
+        },
+        include: [db.Journals]
+      })
+      .then(dbEntries => {
+        res.json(dbEntries);
+      })
+      .catch(err => {
+        console.log("Select All Error: " + err);
+        res.status(400).json(err);
+      });
+  },
+  //select all deleted entries from the selected journal
+  getAllDeleted: (req, res) => {
+    db
+      .Entries
+      .findAll({
+        where: {
+          [Op.and]: [{
+              JournalId: req.params.journalId
+            },
+            {
+              isTrashed: true
+            }
+          ]
         },
         include: [db.Journals]
       })
