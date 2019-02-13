@@ -1,0 +1,41 @@
+{
+  "name": "memoir",
+  "version": "1.0.0",
+  "description": "Project-2: Personal Memoir",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Houssnou/memoir.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Houssnou/memoir/issues"
+  },
+  "homepage": "https://github.com/Houssnou/memoir#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.13.2",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-list-endpoints": "^4.0.0",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
+  }
+}
