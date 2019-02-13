@@ -19,7 +19,8 @@ $(document).ready(() => {
       //$("#userName").text(userInfo.firstName);
       userId = userInfo.id;
       userName = userInfo.lastName;
-      console.log(userId, userName);
+      //display the name of the current user
+      $("#userName").text(userName);
 
       //on load display all users journals
       $.ajax({
@@ -114,31 +115,31 @@ $(document).ready(() => {
     console.log(entryId)
 
     //ajax call to display all entries for a journal
-     if(!entryId){ //if entryID doesnt exist its a new entry
+    if (!entryId) { //if entryID doesnt exist its a new entry
       console.log("Doesnt exist");
       $.ajax({
-      url: "/api/entries",
-      method: "POST",
-      data: entryData
-    }).then(result => {
-      console.log(result);
-      //just refresh page for proof of concept
-      location.reload();
-    });
-  }else{
-    //its an update
-    console.log("exits.");
-    console.log(entryId)
-    $.ajax({
-      url: "/api/entries/"+entryId,
-      method: "PUT",
-      data: entryData
-    }).then(result => {
-      console.log(result);
-      //just refresh page for proof of concept
-      location.reload();
-    });
-  }
+        url: "/api/entries",
+        method: "POST",
+        data: entryData
+      }).then(result => {
+        console.log(result);
+        //just refresh page for proof of concept
+        location.reload();
+      });
+    } else {
+      //its an update
+      console.log("exits.");
+      console.log(entryId)
+      $.ajax({
+        url: "/api/entries/" + entryId,
+        method: "PUT",
+        data: entryData
+      }).then(result => {
+        console.log(result);
+        //just refresh page for proof of concept
+        location.reload();
+      });
+    }
   });
 
   //event listener for a click on delete entry
