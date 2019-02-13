@@ -29,6 +29,7 @@
     "express-list-endpoints": "^4.0.0",
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
+    "jspdf": "^1.5.3",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
