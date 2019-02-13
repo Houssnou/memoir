@@ -89,12 +89,15 @@ $(document).ready(() => {
             `<div id='journal${index+1}' aria-labelledby='heading${index+1}'  role='tabpanel' data-parent='#journals-accordion'>`);
 
           //quick check to determine if it should be a class collapse show or not        
-          (index === 0) ? $divCollapse.addClass("collapse show"): $divCollapse.addClass("collapse");
+          (index === 0) ? $divCollapse.addClass("blue-grey lighten-5 collapse show"): $divCollapse.addClass("blue-grey lighten-5 collapse");
 
           const $cardBody = $("<div class='card-body'>");
 
           //adding a div to display the content of the editor
-          const $divContent = $("<p>").append(journal.description).appendTo($cardBody);
+          // adding class to add colors to p tag
+          const journalDescription = $("<p>");
+          journalDescription.addClass("text-secondary");
+          const $divContent = journalDescription.append(journal.description).appendTo($cardBody);
 
           $cardBody.appendTo($divCollapse);
 
