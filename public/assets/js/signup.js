@@ -14,7 +14,31 @@ $(document).ready(function () {
       email: $("#email-input").val().trim(),
       password: $("#pass-input").val().trim()
     };
+
+    const confirmPassword = $("#passConfirm-input").val().trim();
+
     console.log(userInfo);
+    console.log(userInfo.password);
+    console.log(confirmPassword);
+    // client side registration checks stuff here
+
+    // min 6 charcters long
+    if (userInfo.password.length < 6) {
+      alert(`password min length does not meet the requirements. ${userInfo.password.length}`);
+      return false;
+    } else {
+      true;
+    }
+
+
+    // before ajax call is made do a client side verfication to make sure both password inputs are the same
+     if (userInfo.password === confirmPassword) {
+      true;
+     } else {
+       alert("passwords do not match");
+       return false;
+     }
+    
     //ajax call to create the user
     $.ajax({
         url: "/api/users",
