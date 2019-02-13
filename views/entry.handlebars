@@ -52,9 +52,13 @@
             <div class="card grey lighten-2 mt-3" id="entry-card">
               <div class="md-form" id="entry-form">
                 <div class="row ml-2">
-                  <div class="col-10">
+                  <div class="col-2">
                     <input type="text" id="entry-title" class="form-control validate">
                     <label data-error="wrong" data-success="right" for="title-input">Title</label>
+                  </div>
+                  <div class="col-8">
+                    <span style="font-weight: bold">Created on: <span id="createdAt"></span></span>
+                    <span style="font-weight: bold">Updated on: <span id="updatedAt"></span></span>
                   </div>
                   <div class="col-2">
                     <i class="fas fa-save"></i>
