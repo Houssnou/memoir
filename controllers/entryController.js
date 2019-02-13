@@ -28,6 +28,30 @@ module.exports = {
         res.status(400).json(err);
       });
   },
+
+//select all deleted entries from the selected journal
+getAllDeletedEntries: (req, res) => {
+  db
+    .Entries
+    .findAll({
+      where: {
+        [Op.and] : [
+          {          
+           JournalId: req.params.journalId
+          },
+           { isTrashed:true}
+        ]        
+      },
+      include: [db.Journals]
+    })
+    .then(dbEntries => {
+      res.json(dbEntries);
+    })
+    .catch(err => {
+      console.log("Select All Error: " + err);
+      res.status(400).json(err);
+    });
+},
   //select one specfic entryfrom the selected journal
   getOneEntry: (req, res) => {
     db

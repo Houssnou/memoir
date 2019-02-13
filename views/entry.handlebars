@@ -15,8 +15,9 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
-          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
-          <a class="dropdown-item" href="./">Logout</a> {{!-- MODAL HTML STARTS AROUND LINE 116 --}}
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
+          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#viewDeleted">View Deleted</a>
+          <a class="dropdown-item" href="./">Logout</a> 
         </div>
       </li>
     </ul>
@@ -41,7 +42,7 @@
       <div class="row">
         <div class="col-sm-3 col-3" id="listedEntries">
           <a button class="btn btn-mdb-color btn-block my-4 mx-2" id="create-entry">ADD Entry</a>
-          <div id="list-entries" class="list-group w-50">
+          <div id="list-entries" class="list-group w-100 ml-2">
             {{!-- list of entries generated dynamically --}}
           </div>
         </div>
@@ -255,4 +256,72 @@
   </div>
 </div>
 <!-- FAQ Modal Large END-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- VIEW DELETED MODAL --}}
+
+<div class="modal fade" id="viewDeleted" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-fluid" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100 text-center" id="modalFaqTitle">Deleted Journal Entries</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <ul class="list-group">
+            <li class="list-group-item stylish-color">123</li>
+            <li class="list-group-item">345</li>
+            <li class="list-group-item">765</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="/assets/js/entry.js"></script>

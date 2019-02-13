@@ -167,7 +167,7 @@ $(document).ready(() => {
       dbEntries.forEach((entry, index) => {
         //create the item as a list item 
         const entryItem = $(`<a class='list-group-item list-group-item-action' href='#list-item-${index}'>`);
-
+        
         //save the journal data with the attr method to be able to get all the entries attached to this journal 
         entryItem.attr("data-id", entry.id);
 

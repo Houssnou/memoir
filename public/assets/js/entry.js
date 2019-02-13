@@ -83,7 +83,7 @@ $(document).ready(() => {
 
         //set the attr entry-id to the delete icon
         //$(".fa-save").attr("entry-id", entry.id);
-        //$(".fa-trash-alt").attr("entry-id", entry.id);
+        $(".fa-trash-alt").attr("entry-id", entry.id);
 
         const entryItemSpan = $("<span class='entrySpan'>").text(entry.title).appendTo(entryItem);
 
@@ -146,19 +146,19 @@ $(document).ready(() => {
     //prevent reload
     e.preventDefault();
 
-    const entryId = $(this).data("data-entry");
+    const entryId = $(this).attr("entry-id");
 
     //confirm delete entry;
     $(document).on("click", "#confirm-delete", function (event) {
       console.log(entryId);
       //ajax call to update the entry isTrashed column
-      /* $.ajax({
+       $.ajax({
         url: "/api/entries/" + entryId,
         method: "DELETE",
       }).then(result => {
         alert("Entry deleted!");
         location.reload();
-      }); */
+      }); 
     });
   });
 

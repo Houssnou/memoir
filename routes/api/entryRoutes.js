@@ -6,6 +6,11 @@ router
   .route("/journals/:journalId")
   .get(entriesController.getAllEntries);
 
+// methods for /api/entry/:journalId (GET) 
+router
+  .route("/deleted/:journalId")
+  .get(entriesController.getAllDeletedEntries);
+
 // methods for /api/entries (POST) 
 router
   .route("/")
