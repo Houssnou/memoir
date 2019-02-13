@@ -183,6 +183,8 @@ $(document).ready(() => {
         //console.log(editor);
         $("#newEntry").show();
         $("#entry-title").val(entry.title);
+        $("#createdAt").text(moment(entry.createdAt).format("lll"));
+        $("#updatedAt").text(moment(entry.updatedAt).format("lll"));
         editor.setData(entry.body);
         editorContent = editor;
 

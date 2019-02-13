@@ -34,7 +34,7 @@ $(document).ready(() => {
           const $row = $("<div class='row align-items-center'>");
           const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
           const $colDates = $("<div class='col-8 d-flex align-content-start'>");
-          const $colActions = $("<div class='col-1 d-flex justify-content-end'>");
+          const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
 
           //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
           //button to make the title clikable
@@ -53,8 +53,11 @@ $(document).ready(() => {
           const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
 
           //$("<i class='fas fa-edit'>") <i class="fas fa-book-open"></i>
-          const $numEntries = $("<span style='color: black; font-weight: bold'>").text("4").appendTo($colActions);
-          const $entries = $("<a href='./entries' class='fas fa-book-open text-success mr-2'>").appendTo($colActions);
+          // <button type="button" class="btn btn-primary">  Notifications <span class="badge badge-light">4</span>
+
+
+          const $entries = $("<a href='./entries' class='btn-primary mr-2'>").text("Entries: ").appendTo($colActions);
+          const $numEntries = $("<span class='badge badge-light' style='color: black; font-weight: bold'>").text("4").appendTo($entries);
           const $update = $("<span class='fas fa-edit text-warning mr-2'>").appendTo($colActions);
           const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
 
