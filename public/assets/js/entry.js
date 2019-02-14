@@ -19,6 +19,7 @@ $(document).ready(() => {
       //$("#userName").text(userInfo.firstName);
       userId = userInfo.id;
       userName = userInfo.lastName;
+      //display the name of the current user
       $("#userName").text(userName);
 
       //on load display all users journals
@@ -47,9 +48,6 @@ $(document).ready(() => {
 
     })
     .catch(err => console.log(err));
-
-  // on load show all deleted entries on modal area
-  
 
   //event listener for a click on a journal item
   $(document).on("click", ".journal", function (event) {
@@ -117,31 +115,31 @@ $(document).ready(() => {
     console.log(entryId)
 
     //ajax call to display all entries for a journal
-     if(!entryId){ //if entryID doesnt exist its a new entry
+    if (!entryId) { //if entryID doesnt exist its a new entry
       console.log("Doesnt exist");
       $.ajax({
-      url: "/api/entries",
-      method: "POST",
-      data: entryData
-    }).then(result => {
-      console.log(result);
-      //just refresh page for proof of concept
-      location.reload();
-    });
-  }else{
-    //its an update
-    console.log("exits.");
-    console.log(entryId)
-    $.ajax({
-      url: "/api/entries/"+entryId,
-      method: "PUT",
-      data: entryData
-    }).then(result => {
-      console.log(result);
-      //just refresh page for proof of concept
-      location.reload();
-    });
-  }
+        url: "/api/entries",
+        method: "POST",
+        data: entryData
+      }).then(result => {
+        console.log(result);
+        //just refresh page for proof of concept
+        location.reload();
+      });
+    } else {
+      //its an update
+      console.log("exits.");
+      console.log(entryId)
+      $.ajax({
+        url: "/api/entries/" + entryId,
+        method: "PUT",
+        data: entryData
+      }).then(result => {
+        console.log(result);
+        //just refresh page for proof of concept
+        location.reload();
+      });
+    }
   });
 
   //event listener for a click on delete entry
@@ -174,6 +172,7 @@ $(document).ready(() => {
     //append entry info to the buttons
     $(".fa-save").attr("entry-id", entry.id);
     $(".fa-trash-alt").attr("entry-id", entry.id);
+    $(".fa-file-pdf").data("data-entry", entry);
 
     //delete the editor
     $("#entry-div").empty();
@@ -220,6 +219,22 @@ $(document).ready(() => {
         console.error(error);
       });
     // 
-
   });
+  //event listener to create the pdf file
+  $(".fa-file-pdf").on("click", function (e) {
+    //prevent reload
+    e.preventDefault();
+    //get the entry data back as an object
+    const entry = $(this).data("data-entry");
+
+    console.log(entry);
+
+    let doc = new jsPDF();
+
+    doc.text(entry.title, 10, 10);
+    doc.text(entry.createdAt+" "+entry.updatedAt, 20, 10);
+    doc.text(entry.body, 40, 10);
+    doc.save('entry.pdf');
+  });
+
 }); //end of

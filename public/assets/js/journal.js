@@ -94,6 +94,7 @@ $(document).ready(() => {
           const $cardBody = $("<div class='card-body'>");
 
           //adding a div to display the content of the editor
+          // adding class to add colors to p tag
           const journalDescription = $("<p>");
           journalDescription.addClass("text-secondary");
           const $divContent = journalDescription.append(journal.description).appendTo($cardBody);
@@ -168,7 +169,7 @@ $(document).ready(() => {
       dbEntries.forEach((entry, index) => {
         //create the item as a list item 
         const entryItem = $(`<a class='list-group-item list-group-item-action' href='#list-item-${index}'>`);
-        
+
         //save the journal data with the attr method to be able to get all the entries attached to this journal 
         entryItem.attr("data-id", entry.id);
 
