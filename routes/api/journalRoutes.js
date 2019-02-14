@@ -17,5 +17,10 @@ router
   .put(journalsController.updateJournal)
   .delete(journalsController.deleteJournal);
 
+//method GET to get all entries for each journal
+router
+  .route("/entries/:journalId")
+  .get(journalsController.countAllEntries);
+
 
 module.exports = router;

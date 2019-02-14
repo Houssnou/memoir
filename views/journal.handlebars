@@ -95,7 +95,6 @@
           </div>
         </div>
 
-
       </div>
     </div>
   </div>
@@ -109,12 +108,6 @@
   <!-- Copyright -->
 </footer>
 
-
-
-
-
-
-
 {{!-- 🤔🤔🤔🤔🤔🤔🤔🤔THIS IS WHERE I THREW ALL THE MODAL STUFF 🤔🤔🤔🤔🤔🤔🤔🤔🤔--}}
 
 
@@ -123,8 +116,6 @@
 <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-fluid" role="document">
-
-
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title w-100" id="accountModalTitle">Account Stuff</h4>
@@ -215,12 +206,6 @@
           </form>
           <!-- Extended material form grid -->
         </div>
-
-
-
-
-
-
         <!-- END ACCUONT MODAL -->
       </div>
       <div class="modal-footer">
@@ -239,8 +224,6 @@
 <div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-lg" role="document">
-
-
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title w-100" id="modalFaqTitle">FAQ</h4>
@@ -261,5 +244,62 @@
   </div>
 </div>
 <!-- FAQ Modal Large END-->
+<!-- begin update modal -->
+<div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="Update-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="update-modal-title">Update an entry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="update-modal-body">
+        <!-- modal body -->
+        <div class="md-form mb-5">
+          <input type="text" id="title-update" class="form-control validate">
+          <label class="font-weight-bold" for="title-input">Title</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="description-update" class="form-control validate">
+          <label class="font-weight-bold" for="description-input">Description</label>
+        </div>
+        <!-- end body -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-danger" id="confirm-update">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Update modal>
+<!-- begin delete modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="Delete-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-modal-title">Delete a journal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="delete-modal-body">
+        <!-- modal body -->
+        <div class="alert alert-danger" role="alert">
+          <strong> Are you sure you want to permanently delete this journal from the list?</strong>
+        </div>
+
+        <!-- end body -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-danger" id="confirm-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end delete modal -->
 
 <script src="/assets/js/journal.js"></script>
