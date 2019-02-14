@@ -36,7 +36,7 @@ module.exports = {
       .findAll({
         where: {
           [Op.and]: [{
-              JournalId: req.params.journalId
+              UserId: req.params.userId
             },
             {
               isTrashed: true

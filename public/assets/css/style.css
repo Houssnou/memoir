@@ -100,6 +100,11 @@
   border: none;
 }
 
+#trashedModal {
+  overflow-x: hidden;
+}
+
+
 @media screen and (max-width: 530px) {
   .entrySpan {
     display: none;
@@ -107,15 +112,33 @@
 }
 
 @media screen and (max-width: 576px) {
-  /* .sidenav {
-    display: none;
-  } */
+  
  .container-fluid#contentBody {
    margin: auto;
    padding: auto;
  }
+
+  #journalSideNav {
+    display: none;
+  }
+
 }
 
+@media screen and (max-width: 876px) {
+  .hiddenAtSmall {
+    display: none;
+  }
+  #journalSideNav {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1137px) {
+  .hiddenAtSmall {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 1300px) {
 

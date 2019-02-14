@@ -44,6 +44,9 @@ $(document).ready(() => {
           //then append it to the div id="list-journals"
           $("#list-journals").append(journalItem);
         });
+
+
+
       });
 
     })
@@ -153,13 +156,13 @@ $(document).ready(() => {
     $(document).on("click", "#confirm-delete", function (event) {
       console.log(entryId);
       //ajax call to update the entry isTrashed column
-       $.ajax({
+      $.ajax({
         url: "/api/entries/" + entryId,
         method: "DELETE",
       }).then(result => {
         alert("Entry deleted!");
         location.reload();
-      }); 
+      });
     });
   });
 
@@ -232,7 +235,7 @@ $(document).ready(() => {
     let doc = new jsPDF();
 
     doc.text(entry.title, 10, 10);
-    doc.text(entry.createdAt+" "+entry.updatedAt, 20, 10);
+    doc.text(entry.createdAt + " " + entry.updatedAt, 20, 10);
     doc.text(entry.body, 40, 10);
     doc.save('entry.pdf');
   });

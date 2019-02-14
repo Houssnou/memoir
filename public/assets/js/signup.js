@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     // min 6 charcters long
     if (userInfo.password.length < 6) {
-      alert(`password min length does not meet the requirements. ${userInfo.password.length}`);
+      alert(`Password requirements do not match. Please have a minimum length of 6 characters.`);
       return false;
     } else {
       true;
