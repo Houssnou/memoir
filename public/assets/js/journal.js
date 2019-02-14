@@ -94,7 +94,6 @@ $(document).ready(() => {
           const $cardBody = $("<div class='card-body'>");
 
           //adding a div to display the content of the editor
-          // adding class to add colors to p tag
           const journalDescription = $("<p>");
           journalDescription.addClass("text-secondary");
           const $divContent = journalDescription.append(journal.description).appendTo($cardBody);
