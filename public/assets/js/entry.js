@@ -19,7 +19,7 @@ $(document).ready(() => {
       //$("#userName").text(userInfo.firstName);
       userId = userInfo.id;
       userName = userInfo.lastName;
-      console.log(userId, userName);
+      $("#userName").text(userName);
 
       //on load display all users journals
       $.ajax({
