@@ -1,17 +1,13 @@
 $(document).ready(function () {
-  //check if a picture exist
-  const photoUrl = localStorage.getItem("photoUrl");
   let userId;
-  /* const userFirstName = localStorage.getItem("userFirstName");
-  const userLastName = localStorage.getItem("userLastName");
-  const userEmail = localStorage.getItem("email"); */
+  //get user infos from db  
   $.ajax({
     url: "/api/users/status",
     method: 'GET'
   }).then(function (userInfo) {
     //console.log(userInfo);
     //set the input field with the existing data
-    userId=userInfo.id;
+    userId = userInfo.id;
     $("#email-input").val(userInfo.email);
     $("#firstName-input").val(userInfo.firstName);
     $("#lastName-input").val(userInfo.lastName);
@@ -39,8 +35,6 @@ $(document).ready(function () {
       form.append('photo', imageData, imageData.name);
     }
 
-    console.log(form);
-
     //ajax call to update the username account
     $.ajax({
         url: "/api/users/" + userId,
@@ -51,7 +45,13 @@ $(document).ready(function () {
         processData: false,
       })
       .then(function (data) {
-        console.log(data);
+        //console.log(data.photo);
+        //display new image
+        $("#photo").attr("src", data.photo);
+        //display user photo 
+        $("#user-avatar").attr("src", data.photo).width(30);
+        $("#user-avatar").attr("src", data.photo).height(30);
+
       });
   });
 

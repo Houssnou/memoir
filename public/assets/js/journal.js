@@ -24,10 +24,7 @@ $(document).ready(() => {
       localStorage.setItem("userId", userId);
       localStorage.setItem("userName", userName);
       localStorage.setItem("photoUrl", photoUrl);
-      localStorage.setItem("userFirstName", userFirstName);
-      localStorage.setItem("userLastName", userLastName);
-      localStorage.setItem("email", userEmail)
-
+      
       //display the name of the current user
       $("#userName").text(userName);
 
@@ -222,12 +219,7 @@ $(document).ready(() => {
     });
   });
 
-
-
 /* ADD ACTIVE CLASSES */
 $("label.font-weight-bold").addClass("active");
-
-
-
 
 }); //end of .ready
