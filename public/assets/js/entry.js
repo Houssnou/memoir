@@ -13,6 +13,10 @@ $(document).ready(() => {
   console.log(userId, userName);
 
   $("#userName").text(userName);
+  //display user photo 
+  $("#user-avatar").attr("src", photoUrl).width(30); 
+  $("#user-avatar").attr("src", photoUrl).height(30);    
+
 
   //on load display all users journals
   $.ajax({

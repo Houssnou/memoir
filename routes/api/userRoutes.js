@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/userController");
-
+const cloudinaryMiddleware = require('../../utils/middleware/cloudinary');
 const passport = require('../../utils/middleware/passport-local');
 
 //method to handle user authentication login status and logout
@@ -28,7 +28,7 @@ router
 //methods for api/users/:id (PUT and DELETE)
 router
   .route("/:id")
-  .put(usersController.changePassword)
+  .put(cloudinaryMiddleware,usersController.updateAccount)
   .delete(usersController.deleteUser);
 
 

@@ -1,6 +1,5 @@
 $(document).ready(function () {
-  console.log("login ready");
-  //event listener for a click on login
+   //event listener for a click on login
   $("#loginBtn").on("click", function (event) {
 
     event.preventDefault();
