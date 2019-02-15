@@ -6,6 +6,9 @@ router
   .route("/users/:userId")
   .get(journalsController.getAllJournals);
 
+router
+  .route("/deleted/:userId")
+  .get(journalsController.getAllDeletedJournals);
 // methods for /api/journals (POST) 
 router
   .route("/")

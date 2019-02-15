@@ -68,11 +68,13 @@ $(document).ready(() => {
                             >`
           ).text(journal.title).appendTo($colTitle);
 
+         
+
           //build the line //build the line: entry 1 created: modified edit and suppress icon 
           const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
           const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(journal.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
-          const $spanLastAccess = $("<span class='mx-2'>").text("Last access :").appendTo($colDates);
-          const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
+          const $spanLastAccess = $("<span class='mx-2 hiddenAtSmall'>").text("Last access :").appendTo($colDates);
+          const $spanLastAccessContent = $("<span class='hiddenAtSmall' style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
 
           const $entries = $("<a href='./entries' class='btn-primary mr-2'>").text("Entries: ").appendTo($colActions);
           const $update = $("<span class='fas fa-edit text-warning mr-2'>").appendTo($colActions);
@@ -219,5 +221,13 @@ $(document).ready(() => {
       });
     });
   });
+
+
+
+/* ADD ACTIVE CLASSES */
+$("label.font-weight-bold").addClass("active");
+
+
+
 
 }); //end of .ready

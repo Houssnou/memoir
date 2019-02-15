@@ -226,4 +226,12 @@ $(document).ready(() => {
     doc.text(entry.body, 40, 10);
     doc.save('entry.pdf');
   });
+
+
+
+
+
+/* ADD ACTIVE CLASS */
+$(".entryTitleArea").addClass("active");
+
 });

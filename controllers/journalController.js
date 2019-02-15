@@ -30,6 +30,28 @@ module.exports = {
         res.status(400).json(err);
       });
   },
+  getAllDeletedJournals: (req, res) => {
+    db
+      .Journals
+      .findAll({
+        where: {
+          [Op.and]: [{
+              UserId: req.params.userId
+            },
+            {
+              isTrashed: true
+            }
+          ]
+        }
+      })
+      .then(dbJournals => {
+        res.json(dbJournals);
+      })
+      .catch(err => {
+        console.log("Select All Error: " + err);
+        res.status(400).json(err);
+      });
+  },
   countAllEntries: (req, res) => {
     db
       .Entries

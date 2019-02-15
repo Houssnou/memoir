@@ -1,6 +1,6 @@
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark lighten-1 sticky-top">
-  <a class="navbar-brand" href="./journals">Home</a>
+  <a class="navbar-brand" href="./">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
-          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
+          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#deletedJournals">View deleted journals</a>
           <a class="dropdown-item" href="./">Logout</a> {{!-- MODAL HTML STARTS AROUND LINE 116 --}}
         </div>
       </li>
@@ -26,7 +27,7 @@
 
 <!-- SIDEBAR HERE -->
 <div class="container-fluid">
-  <div class="sidenav mdb-color">
+  <div class="sidenav mdb-color" id="journalSideNav"
     <div class="container-fluid mb-5">
       <div class="font-weight-bold text-light">
         <br><br>
@@ -276,6 +277,67 @@
   </div>
 </div>
 <!-- end delete modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- VIEW DELETED JOURNALS --}}
+
+<div class="modal fade" id="deletedJournals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-fluid" role="document">
+
+
+    <div class="modal-content mdb-color lighten-4" id="trashedJournalModal">
+      <div class="modal-header">
+        <h4 class="modal-title w-100 text-center font-weight-bold" id="modalFaqTitle">Deleted Journals</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          {{!-- row accordion to list all deleted journals --}}
+          <div class="row">
+            <div class="col-sm-10 col-3 mx-auto">
+              <div class="list-group text-center text-white">
+                {{!-- Accordion --}}
+                <!--Accordion wrapper-->
+                <div class="accordion mdb-color lighten-3" id="deletedJournals-accordion" role="tablist"
+                  aria-multiselectable="true">
+
+
+                  <!--/.Accordion wrapper-->
+                  {{!-- End Accordion --}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script src="/assets/js/journal.js"></script>
 <script src="/assets/js/user.js"></script>
