@@ -1,54 +1,40 @@
 $(document).ready(() => {
+
   $("#newEntry").hide();
   $("#create-entry").hide();
 
   let editorContent;
 
-  //global variables to store the user infos 
-  let userId;
-  let userName;
-  let journalId;
+  //read the data back from local Storage
+  userId = localStorage.getItem("userId");
+  userName = localStorage.getItem("userName");
+  photoUrl = localStorage.getItem("photoUrl");
 
-  //ajax call to display the user informations
+  console.log(userId, userName);
+
+  $("#userName").text(userName);
+
+  //on load display all users journals
   $.ajax({
-      url: "/api/users/status",
-      method: 'GET'
-    }).then(function (userInfo) {
-      //console.log(userInfo);
+      url: "/api/journals/users/" + userId,
+      method: "GET"
+    }).then(bdJournals => {
+      console.log("All user Journals");
+      console.log(bdJournals);
+      //build the list of the journal for the right side of the navbar
+      //create the listitem
+      bdJournals.forEach((journal, index) => {
+        //create the item as a list item 
+        const journalItem = $(`<a class='journal mdb-color list-group-item list-group-item-action' href='#list-item-${index}'>`);
 
-      //$("#userName").text(userInfo.firstName);
-      userId = userInfo.id;
-      userName = userInfo.lastName;
-      //display the name of the current user
-      $("#userName").text(userName);
+        //save the journal data with the attr method to be able to get all the entries attached to this journal 
+        journalItem.attr("journal-id", journal.id);
 
-      //on load display all users journals
-      $.ajax({
-        url: "/api/journals/users/" + userId,
-        method: "GET"
-      }).then(bdJournals => {
-        console.log("All user Journals");
-        console.log(bdJournals);
-        //build the list of the journal for the right side of the navbar
-        //<a class="list-group-item list-group-item-action" href="#list-item-2"><span class="entrySpan">Journal 1</span></a>
-        //create the listitem
-        bdJournals.forEach((journal, index) => {
-          //create the item as a list item 
-          const journalItem = $(`<a class='journal mdb-color list-group-item list-group-item-action' href='#list-item-${index}'>`);
+        const journalItemSpan = $("<span class='entrySpan'>").text(journal.title).appendTo(journalItem);
 
-          //save the journal data with the attr method to be able to get all the entries attached to this journal 
-          journalItem.attr("journal-id", journal.id);
-
-          const journalItemSpan = $("<span class='entrySpan'>").text(journal.title).appendTo(journalItem);
-
-          //then append it to the div id="list-journals"
-          $("#list-journals").append(journalItem);
-        });
-
-
-
+        //then append it to the div id="list-journals"
+        $("#list-journals").append(journalItem);
       });
-
     })
     .catch(err => console.log(err));
 
@@ -76,7 +62,6 @@ $(document).ready(() => {
       console.log(dbEntries);
 
       //build the list of the journal for the right side of the navbar
-      //<a class="list-group-item list-group-item-action" href="#list-item-2"><span class="entrySpan">Journal 1</span></a>
       //create the listitem
       dbEntries.forEach((entry, index) => {
         //create the item as a list item 
@@ -86,7 +71,6 @@ $(document).ready(() => {
         entryItem.data("data-entry", entry);
 
         //set the attr entry-id to the delete icon
-        //$(".fa-save").attr("entry-id", entry.id);
         $(".fa-trash-alt").attr("entry-id", entry.id);
 
         const entryItemSpan = $("<span class='entrySpan'>").text(entry.title).appendTo(entryItem);
@@ -230,14 +214,20 @@ $(document).ready(() => {
     //get the entry data back as an object
     const entry = $(this).data("data-entry");
 
-    console.log(entry);
+    //console.log(entry);
 
     let doc = new jsPDF();
-
     doc.text(entry.title, 10, 10);
     doc.text(entry.createdAt + " " + entry.updatedAt, 20, 10);
     doc.text(entry.body, 40, 10);
     doc.save('entry.pdf');
   });
 
-}); //end of
+
+
+
+
+/* ADD ACTIVE CLASS */
+$(".entryTitleArea").addClass("active");
+
+});

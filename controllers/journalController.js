@@ -2,14 +2,23 @@
 const db = require("../models");
 
 
+//sequelized operator AND
+const Op = require("sequelize").Op;
+
 module.exports = {
-  //select all journals from the connected user
+  //select all journals from the connected user 
   getAllJournals: (req, res) => {
     db
       .Journals
       .findAll({
         where: {
-          UserId: req.params.userId
+          [Op.and]: [{
+            UserId: req.params.userId
+            },
+            {
+              isTrashed: false
+            }
+          ]
         },
         include: [db.Users]
       })
@@ -21,7 +30,44 @@ module.exports = {
         res.status(400).json(err);
       });
   },
-
+  getAllDeletedJournals: (req, res) => {
+    db
+      .Journals
+      .findAll({
+        where: {
+          [Op.and]: [{
+              UserId: req.params.userId
+            },
+            {
+              isTrashed: true
+            }
+          ]
+        }
+      })
+      .then(dbJournals => {
+        res.json(dbJournals);
+      })
+      .catch(err => {
+        console.log("Select All Error: " + err);
+        res.status(400).json(err);
+      });
+  },
+  countAllEntries: (req, res) => {
+    db
+      .Entries
+      .findAll({
+        where: {
+          JournalId: req.params.journalId
+        }
+      })
+      .then(Entries => {
+        res.json(Entries);
+      })
+      .catch(err => {
+        console.log("Select All Error: " + err);
+        res.status(400).json(err);
+      });
+  },
   //add a journal
   addJournal: (req, res) => {
     //console.log (req.body)
@@ -68,7 +114,7 @@ module.exports = {
     db
       .Journals
       .update({
-        isTrashed: req.body.isTrashed
+        isTrashed: true
       }, {
         where: {
           id: req.params.id

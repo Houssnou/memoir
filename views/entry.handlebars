@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-sm-3 col-3" id="listedEntries">
           <a button class="btn btn-mdb-color btn-block my-4 mx-2" id="create-entry">ADD Entry</a>
-          <div id="list-entries" class="ml-2 list-group text-center w-100">
+          <div id="list-entries" class="ml-2 list-group w-100 text-center">
             {{!-- list of entries generated dynamically --}}
           </div>
         </div>
@@ -56,7 +56,7 @@
                 <div class="row ml-2">
                   <div class="col-2">
                     <input type="text" id="entry-title" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="title-input">Title</label>
+                    <label data-error="wrong" data-success="right" for="title-input" class="entryTitleArea">Title</label>
                   </div>
                   <div class="col-8">
                     <span style="font-weight: bold">Created on: <span id="createdAt"></span></span>
@@ -85,7 +85,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="page-footer font-small stylish-color-dark fixed-bottom">
@@ -295,7 +294,7 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          {{!-- row accordion to list all journals with a the description --}}
+          {{!-- row accordion to list all journals deleted entries --}}
           <div class="row">
             <div class="col-sm-10 col-3 mx-auto">
               <div class="list-group text-center text-white">

@@ -22,8 +22,7 @@ $(document).ready(() => {
       $("#userName").text(userName);
 
       //display user photo 
-      //thats marian partssss
-      
+      //thats marian partssss      
 
       //on load display all users journals
       $.ajax({
@@ -67,22 +66,32 @@ $(document).ready(() => {
           const $spanLastAccessContent = $("<span class='hiddenAtSmall' style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
 
           const $entries = $("<a href='./entries' class='btn-primary mr-2'>").text("Entries: ").appendTo($colActions);
-          const $numEntries = $("<span class='badge badge-light' style='color: black; font-weight: bold'>").text("4").appendTo($entries);
           const $update = $("<span class='fas fa-edit text-warning mr-2'>").appendTo($colActions);
           const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
+
+          //ajax call to display the number of entries for a journal
+          let numEntries;
+          $.ajax({
+            url: "/api/journals/entries/" + journal.id,
+            method: "GET"
+          }).then(dbEntries => {
+            //console.log(dbEntries);
+            numEntries = dbEntries.length;
+            const $numEntriesSpan = $("<span class='badge badge-light' style='color: black; font-weight: bold'>").text(numEntries).appendTo($entries);
+          });
 
           //link the data to the button to be able to use it on click on the button
           $entries.attr("journal-id", journal.id);
 
           $update
-            .attr("id", "update");
-          /* .attr("data-toggle", "modal")
-          .attr("data-target", "#update-modal"); */
+            .attr("id", "update")
+            .attr("data-toggle", "modal")
+            .attr("data-target", "#update-modal");
 
           $delete
-            .attr("id", "delete");
-          /* .attr("data-toggle", "modal")
-          .attr("data-target", "#delete-modal"); */
+            .attr("id", "delete")
+            .attr("data-toggle", "modal")
+            .attr("data-target", "#delete-modal");
 
           // Using the data method to append more data 
           $entries.data("data-journal", journal);
@@ -113,7 +122,6 @@ $(document).ready(() => {
 
           //build the card content
           $card.append($cardheader, $divCollapse).appendTo("#journals-accordion");
-
         });
       });
 
@@ -149,4 +157,67 @@ $(document).ready(() => {
       location.reload();
     });
   });
+
+  //event listener for a click on update journal
+  $(document).on("click", ".fa-edit", function (e) {
+    //prevent reload
+    e.preventDefault();
+
+    const journal = $(this).data("data-journal");
+
+    //set the input values with the data
+    $("#title-update").val(journal.title);
+    $("#description-update").val(journal.description);
+
+    //confirm delete entry;
+    $(document).on("click", "#confirm-update", function (event) {
+      console.log(journal.id);
+
+      //build the update Object
+      const journalUpdate = {
+        title: $("#title-update").val().trim(),
+        description: $("#description-update").val().trim()
+      }
+      //ajax call to update the journal
+      $.ajax({
+        url: "/api/journals/" + journal.id,
+        method: "PUT",
+        data: journalUpdate
+      }).then(result => {
+        alert("Journal Updated!");
+        location.reload();
+      });
+    });
+  });
+
+
+  //event listener for a click on delete journal
+  $(document).on("click", ".fa-trash-alt", function (e) {
+    //prevent reload
+    e.preventDefault();
+
+    const journal = $(this).data("data-journal");
+
+    //confirm delete entry;
+    $(document).on("click", "#confirm-delete", function (event) {
+      console.log(journal.id);
+      //ajax call to update the entry isTrashed column
+      $.ajax({
+        url: "/api/journals/" + journal.id,
+        method: "DELETE",
+      }).then(result => {
+        alert("Journal deleted!");
+        location.reload();
+      });
+    });
+  });
+
+
+
+/* ADD ACTIVE CLASSES */
+$("label.font-weight-bold").addClass("active");
+
+
+
+
 }); //end of .ready

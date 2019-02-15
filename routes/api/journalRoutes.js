@@ -6,6 +6,9 @@ router
   .route("/users/:userId")
   .get(journalsController.getAllJournals);
 
+router
+  .route("/deleted/:userId")
+  .get(journalsController.getAllDeletedJournals);
 // methods for /api/journals (POST) 
 router
   .route("/")
@@ -16,6 +19,11 @@ router
   .route("/:id")
   .put(journalsController.updateJournal)
   .delete(journalsController.deleteJournal);
+
+//method GET to get all entries for each journal
+router
+  .route("/entries/:journalId")
+  .get(journalsController.countAllEntries);
 
 
 module.exports = router;
