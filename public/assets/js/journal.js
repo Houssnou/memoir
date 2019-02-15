@@ -53,10 +53,10 @@ $(document).ready(() => {
           const $cardheader = $(`<div class='card-header text-align' role='tab' id='heading${index+1}'>`);
           //div row to wrap the line : title dates actions
           //inside the header we will have a row with 3colums 2-8-2
-          const $row = $("<div class='row align-items-center'>");
-          const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
-          const $colDates = $("<div class='col-8 d-flex align-content-start'>");
-          const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
+          const $row = $("<div class='row align-items-center justify-content-between'>");
+          const $colTitle = $("<div class='col-sm-4 col-lg-2 d-flex'>");
+          const $colDates = $("<div class='col-sm-5 col-lg-8 d-flex'>");
+          const $colActions = $("<div class='col-sm-3 col-lg-2 d-flex'>");
 
           //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
           //button to make the title clikable
@@ -71,7 +71,7 @@ $(document).ready(() => {
          
 
           //build the line //build the line: entry 1 created: modified edit and suppress icon 
-          const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
+          const $spanCreated = $("<span class='hiddenAtSmall2 mr-2'>").text("Created :").appendTo($colDates);
           const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(journal.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
           const $spanLastAccess = $("<span class='mx-2 hiddenAtSmall'>").text("Last access :").appendTo($colDates);
           const $spanLastAccessContent = $("<span class='hiddenAtSmall' style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);

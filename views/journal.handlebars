@@ -38,9 +38,10 @@
 
   <div class="container-fluid mt-3" id="contentBody">
     <div class="card blue-grey lighten-3" id="pageCard">
+      <div id="pushJournalStuffLeft">
       {{!-- row title with the button to create new row --}}
-      <div class="row">
-        <div class="col-sm-10 col-3 mx-4 my-4">
+      <div class="justify-content-center">
+        <div class="mx-4 my-4">
           <div id="journal-title" class="list-group text-center">
             <a button class="btn btn-mdb-color btn-block" id="create-journal" data-toggle="modal"
               data-target="#addJournal-modal">ADD Journal</a>
@@ -49,8 +50,8 @@
       </div>
 
       {{!-- row accordion to list all journals with a the description --}}
-      <div class="row">
-        <div class="col-sm-10 col-3 mx-4">
+      <div class="justify-content-center">
+        <div class="mx-4">
           <div class="list-group text-center text-white">
             {{!-- Accordion --}}
             <!--Accordion wrapper-->
@@ -97,6 +98,7 @@
         </div>
 
       </div>
+      </div>{{!-- HERE --}}
     </div>
   </div>
 </div>
