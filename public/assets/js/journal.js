@@ -3,6 +3,9 @@ $(document).ready(() => {
   let userId;
   let userName;
   let photoUrl;
+  let userFirstName;
+  let userLastName;
+  let userEmail;
   //ajax call to display the user informations
   $.ajax({
       url: "/api/users/status",
@@ -12,17 +15,25 @@ $(document).ready(() => {
       userId = userInfo.id;
       userName = userInfo.lastName;
       photoUrl = userInfo.photo;
+      userFirstName = userInfo.firstName;
+      userLastName = userInfo.lastName;
+      userEmail = userInfo.email;
+      console.log(photoUrl);
 
       //set data to local storage
       localStorage.setItem("userId", userId);
       localStorage.setItem("userName", userName);
       localStorage.setItem("photoUrl", photoUrl);
+      localStorage.setItem("userFirstName", userFirstName);
+      localStorage.setItem("userLastName", userLastName);
+      localStorage.setItem("email", userEmail)
 
       //display the name of the current user
       $("#userName").text(userName);
 
       //display user photo 
-      //thats marian partssss      
+      $("#user-avatar").attr("src", userInfo.photo).width(30); 
+      $("#user-avatar").attr("src", userInfo.photo).height(30);    
 
       //on load display all users journals
       $.ajax({
@@ -189,7 +200,6 @@ $(document).ready(() => {
       });
     });
   });
-
 
   //event listener for a click on delete journal
   $(document).on("click", ".fa-trash-alt", function (e) {

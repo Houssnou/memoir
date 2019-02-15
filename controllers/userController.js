@@ -74,6 +74,22 @@ module.exports = {
       });
 
   },
+  //update a user /:id
+  updateAccount: (req, res) => {
+    console.log(req.body);
+    db.Users.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      }).then(result => {
+        res.json(result)
+      })
+      .catch(err => {
+        console.log("Change Password Error: " + err);
+        res.status(400).json(err);
+      });
+
+  },
 
   //delete a user
   deleteUser: (req, res) => {

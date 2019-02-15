@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true
       }
@@ -34,6 +35,7 @@ module.exports = function(sequelize, DataTypes) {
     photo:{
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue:"https://mdbootstrap.com/img/Photos/Others/placeholder.jpg",
       validate: {
         isUrl: true
       }

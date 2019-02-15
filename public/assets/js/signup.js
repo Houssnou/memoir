@@ -1,11 +1,8 @@
 $(document).ready(function () {
-  console.log("ready");
-
-
+ //event listener for a click on register account
   $("#registerAccountBtn").on("click", function (event) {
 
     //passConfirm = $("#passConfirm-input").val().trim();
-
     event.preventDefault();
 
     const userInfo = {
@@ -17,11 +14,8 @@ $(document).ready(function () {
 
     const confirmPassword = $("#passConfirm-input").val().trim();
 
-    console.log(userInfo);
-    console.log(userInfo.password);
-    console.log(confirmPassword);
-    // client side registration checks stuff here
-
+    
+    // client side registration 
     // min 6 charcters long
     if (userInfo.password.length < 6) {
       alert(`Password requirements do not match. Please have a minimum length of 6 characters.`);
@@ -30,12 +24,11 @@ $(document).ready(function () {
       true;
     }
 
-
     // before ajax call is made do a client side verfication to make sure both password inputs are the same
      if (userInfo.password === confirmPassword) {
       true;
      } else {
-       alert("passwords do not match");
+       alert("Passwords do not match");
        return false;
      }
     
