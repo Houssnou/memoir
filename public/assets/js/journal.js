@@ -32,7 +32,8 @@ $(document).ready(() => {
       $("#userName").text(userName);
 
       //display user photo 
-      //thats marian partssss      
+      $("#user-avatar").attr("src", userInfo.photo).width(30); 
+      $("#user-avatar").attr("src", userInfo.photo).height(30);    
 
       //on load display all users journals
       $.ajax({

@@ -11,7 +11,7 @@
       <li class="nav-item avatar dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          <img src="https://via.placeholder.com/30" class="rounded-circle z-depth-0" alt="avatar image">
+          <img class="rounded-circle z-depth-0" alt="avatar image" id="user-avatar">
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
@@ -31,8 +31,8 @@
       <div class="font-weight-bold text-light">
         <br><br>
         <div id="list-journals" class="list-group text-center">
-        {{!-- Stuff dynamically appears here --}}
-        </div> 
+          {{!-- Stuff dynamically appears here --}}
+        </div>
       </div>
     </div>
   </div>
@@ -68,12 +68,12 @@
                 </div>
                 <div class="row">
                   <div class="col-12">
-                   <div id="entry-div">
-                     <textarea id="entry-body" cols="30" rows="20" placeholder="WRITE"></textarea>
-                   </div> 
+                    <div id="entry-div">
+                      <textarea id="entry-body" cols="30" rows="20" placeholder="WRITE"></textarea>
+                    </div>
                   </div>
                 </div>
-                
+
               </div>
             </div>
           </form>
@@ -125,133 +125,107 @@
 <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-fluid" role="document">
-
-
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title w-100" id="accountModalTitle">Account Stuff</h4>
+        <h4 class="modal-title w-100" id="accountModalTitle">User Account</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <!-- INSERT ACCOUNT CHANGE STUFF HERE -->
-
         <div class="container">
           <!-- Extended material form grid -->
-          <form>
+          <div>
             <!-- Grid row -->
-            <div class="form-row">
-              <!-- Grid column -->
+            <form class="md-form" id="post-form">
+              <div class="row">
+                <div class="col-4">
+                  {{!-- picture stuff --}}
+                  <div class="file-field">
+                    <div class="z-depth-1-half mb-4">
+                      <img class="img-fluid" alt="example placeholder" id="photo">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <div class="btn btn-mdb-color btn-rounded float-left">
+                        <span>Choose file</span>
+                        <input type="file" id="photo-update">
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              <div class="col-md-6">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
-                  <label for="inputEmail4MD">Email</label>
+                <div class="col-8">
+                  <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="email" id="email-input" class="form-control" disabled>
+                    <label for="inputDisabledEx" class="disabled"></label>
+                  </div>
+
+                  <div class="md-form mb-5">
+                    <i class="fas fa-user prefix grey-text"></i>
+                    <input type="text" id="firstName-input" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="firstName-input"></label>
+                  </div>
+
+                  <div class="md-form mb-5">
+                    <i class="fas fa-user prefix grey-text"></i>
+                    <input type="text" id="lastName-input" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="lastName-input"></label>
+                  </div>
+                  <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <input type="password" id="pass-input" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="pass-input">Your password</label>
+                  </div>
+
+                  <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text" style="visibility:hidden"></i>
+                    <input type="password" id="passConfirm-input" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="passConfirm-input">Confirm password</label>
+                  </div>
                 </div>
               </div>
-              <!-- Grid column -->
 
-              <!-- Grid column -->
-              <div class="col-md-6">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="password" class="form-control" id="inputPassword4MD" placeholder="Password">
-                  <label for="inputPassword4MD">Password</label>
-                </div>
-              </div>
-              <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-
-            <!-- Grid row -->
-            <div class="row">
-              <!-- Grid column -->
-              <div class="col-md-12">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="text" class="form-control" id="inputAddressMD" placeholder="1234 Main St">
-                  <label for="inputAddressMD">Address</label>
-                </div>
-              </div>
-              <!-- Grid column -->
-
-              <!-- Grid column -->
-              <div class="col-md-12">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="text" class="form-control" id="inputAddress2MD"
-                    placeholder="Apartment, studio, or floor">
-                  <label for="inputAddress2MD">Address 2</label>
-                </div>
-              </div>
-              <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-
-            <!-- Grid row -->
-            <div class="form-row">
-              <!-- Grid column -->
-              <div class="col-md-6">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="text" class="form-control" id="inputCityMD" placeholder="New York City">
-                  <label for="inputCityMD">City</label>
-                </div>
-              </div>
-              <!-- Grid column -->
-
-              <!-- Grid column -->
-              <div class="col-md-6">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <input type="text" class="form-control" id="inputZipMD" placeholder="11206-1117">
-                  <label for="inputZipMD">Zip</label>
-                </div>
-              </div>
-              <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-            {{!-- <button type="submit" class="btn btn-primary btn-md">Sign in</button> --}}
-          </form>
-          <!-- Extended material form grid -->
+              <!-- Extended material form grid -->
+          </div>
+          <!-- END ACCUONT MODAL -->
         </div>
-        <!-- END ACCUONT MODAL -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 Account modal end 🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 -->
-<!-- FAQ MODAL -->
-<!-- Central Modal large -->
-<div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-  <div class="modal-dialog modal-lg" role="document">
-
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title w-100" id="modalFaqTitle">FAQ</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h4>FAQ stuff here</h4>
-        <p>Q: What is this?</p>
-        <p>A: Stuff</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm" id="update-account">Save changes</button>
+        </div>
+        </form>
       </div>
     </div>
   </div>
-</div>
-<!-- FAQ Modal Large END-->
-<script src="/assets/js/entry.js"></script>
+  <!--🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 Account modal end 🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔 -->
+
+  <!-- FAQ MODAL -->
+  <!-- Central Modal large -->
+  <div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="modalFaqTitle">FAQ</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4>FAQ stuff here</h4>
+          <p>Q: What is this?</p>
+          <p>A: Stuff</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FAQ Modal Large END-->
+  <script src="/assets/js/entry.js"></script>
+  <script src="/assets/js/user.js"></script>

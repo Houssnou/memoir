@@ -1,21 +1,22 @@
 $(document).ready(function () {
   //check if a picture exist
   const photoUrl = localStorage.getItem("photoUrl");
-  const userId = localStorage.getItem("userId");
-  const userFirstName = localStorage.getItem("userFirstName");
+  let userId;
+  /* const userFirstName = localStorage.getItem("userFirstName");
   const userLastName = localStorage.getItem("userLastName");
-  const userEmail = localStorage.getItem("email");
-
-  console.log(photoUrl);
-  console.log(userId);
-
-  //set the input field with the existing data
-
-  $("#email-input").val(userEmail);
-  $("#firstName-input").val(userFirstName);
-  $("#lastName-input").val(userLastName);
-  $("#photo").attr("src", photoUrl);
-
+  const userEmail = localStorage.getItem("email"); */
+  $.ajax({
+    url: "/api/users/status",
+    method: 'GET'
+  }).then(function (userInfo) {
+    //console.log(userInfo);
+    //set the input field with the existing data
+    userId=userInfo.id;
+    $("#email-input").val(userInfo.email);
+    $("#firstName-input").val(userInfo.firstName);
+    $("#lastName-input").val(userInfo.lastName);
+    $("#photo").attr("src", userInfo.photo);
+  });
   //event listener on update user account
   $('#post-form').on('submit', function (e) {
     e.preventDefault();
@@ -42,7 +43,7 @@ $(document).ready(function () {
 
     //ajax call to update the username account
     $.ajax({
-        url: "/api/users/"+ userId,
+        url: "/api/users/" + userId,
         method: "PUT",
         data: form,
         cache: false,
