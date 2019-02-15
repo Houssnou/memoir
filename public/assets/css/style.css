@@ -1,6 +1,26 @@
 /* I need to reoragnize this area by page first then class/id then alphabetically. ahhh */
 
+body, html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url("../images/writingimg.jpg");
 
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  animation-duration: 1.8s;
+  font-family: 'Kalam', cursive;
+  font-size: 60px;
+}
 .sidenav {
   height: 100%;
   width: 160px;
@@ -70,6 +90,7 @@
 #contentBody{
   margin-left: 11%;
   width: 89%;
+  opacity: .85;
 }
 
 #pageCard{
@@ -106,10 +127,11 @@
 }
 
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 575.98px) {
   .entrySpan {
     display: none;
   }
+  
 }
 
 @media screen and (max-width: 576px) {
@@ -125,14 +147,18 @@
 
 }
 
-@media screen and (max-width: 876px) {
-  .hiddenAtSmall {
+@media screen and (max-width: 900px) {
+  .hiddenAtSmall2 {
     display: none;
   }
   #journalSideNav {
     display: none;
   }
 
+  #contentBody {
+    margin: 0% !important;
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 1137px) {
