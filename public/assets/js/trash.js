@@ -1,159 +1,156 @@
-$(document).ready(function() {
- 
-/* THIS AREA IS FOR DELETED ENTRIES THE VIEW DELETED JOURNALS ARE ABOVE */
+$(document).ready(function () {
 
-const userId = localStorage.getItem("userId");
-console.log(`USER ID : ${userId}`);
+  /* THIS AREA IS FOR DELETED ENTRIES THE VIEW DELETED JOURNALS ARE ABOVE */
+  const userId = localStorage.getItem("userId");
+  console.log(`USER ID : ${userId}`);
 
 
-// on load display all deleted entries on the modal area
-$.ajax({
-  url: "/api/entries/deleted/" + userId,
-  method: "GET"
-}).then(deletedEntries => {
-  console.log(`Deleted stuff`);
-  console.log(deletedEntries);
+  // on load display all deleted entries on the modal area
+  $.ajax({
+    url: "/api/entries/deleted/" + userId,
+    method: "GET"
+  }).then(deletedEntries => {
+    //console.log(deletedEntries);
 
-  deletedEntries.forEach((entry, index) => {
-    
-    //accordion is just a card with header and body so lets have fun.          
-          //build the card
+    deletedEntries.forEach((entry, index) => {
 
-          const $card = $("<card>");
+      //accordion is just a card with header and body so lets have fun.          
+      //build the card
 
-          //the header
-          const $cardheader = $(`<div class='card-header text-align' role='tab' id='heading${index+1}'>`);
-          //div row to wrap the line : title dates actions
-          //inside the header we will have a row with 3colums 2-8-2
-          const $row = $("<div class='row align-items-center'>");
-          const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
-          const $colDates = $("<div class='col-8 d-flex align-content-start text-dark'>");
-          const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
+      const $card = $("<card>");
 
-          //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
-          //button to make the title clikable
-          const $buttonTitle = $(
-            `<a data-parent='#entries-accordion' href='#entry${index+1}' 
+      //the header
+      const $cardheader = $(`<div class='card-header text-align' role='tab' id='heading${index+1}'>`);
+      //div row to wrap the line : title dates actions
+      //inside the header we will have a row with 3colums 2-8-2
+      const $row = $("<div class='row align-items-center'>");
+      const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
+      const $colDates = $("<div class='col-8 d-flex align-content-start text-dark'>");
+      const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
+
+      //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
+      //button to make the title clikable
+      const $buttonTitle = $(
+        `<a data-parent='#entries-accordion' href='#entry${index+1}' 
                             data-toggle='collapse' data-target='#entry${index+1}'
                             aria-expanded='true' aria-controls='entry${index+1}'
                             style='color: black; font-weight: bold; text-decoration: none'
                             >`
-          ).text(entry.title).appendTo($colTitle);
+      ).text(entry.title).appendTo($colTitle);
 
-          //build the line //build the line: entry 1 created: modified edit and suppress icon 
-          const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
-          const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(entry.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
-          const $spanLastAccess = $("<span class='mx-2'>").text("Last access :").appendTo($colDates);
-          const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(entry.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
-         
-          const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
+      //build the line //build the line: entry 1 created: modified edit and suppress icon 
+      const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
+      const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(entry.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
+      const $spanLastAccess = $("<span class='mx-2'>").text("Last access :").appendTo($colDates);
+      const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(entry.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
 
-          //append them to the 
-          //$cardheader.append($buttonTitle, $spanCreated, $spanModified, $update, $delete);
-          $row.append($colTitle, $colDates, $colActions);
-          $cardheader.append($row);
+      const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
 
-          //the body
-          const $divCollapse = $(
-            `<div id='entry${index+1}' aria-labelledby='heading${index+1}'  role='tabpanel' data-parent='#entries-accordion'>`);
+      //append them to the 
+      //$cardheader.append($buttonTitle, $spanCreated, $spanModified, $update, $delete);
+      $row.append($colTitle, $colDates, $colActions);
+      $cardheader.append($row);
 
-          //quick check to determine if it should be a class collapse show or not        
-          (index === 0) ? $divCollapse.addClass("blue-grey lighten-5 collapse show"): $divCollapse.addClass("blue-grey lighten-5 collapse");
+      //the body
+      const $divCollapse = $(
+        `<div id='entry${index+1}' aria-labelledby='heading${index+1}'  role='tabpanel' data-parent='#entries-accordion'>`);
 
-          const $cardBody = $("<div class='card-body'>");
+      //quick check to determine if it should be a class collapse show or not        
+      (index === 0) ? $divCollapse.addClass("blue-grey lighten-5 collapse show"): $divCollapse.addClass("blue-grey lighten-5 collapse");
 
-          //adding a div to display the content of the editor
-          // adding class to add colors to p tag
-          const entryDescription = $("<p>");
-          entryDescription.addClass("text-dark");
+      const $cardBody = $("<div class='card-body'>");
 
-          //cut down entry.body to 50 characters?
-          const maxShown = 50;
-          const trimmedEntryBody = entry.body.substring(0, maxShown);
+      //adding a div to display the content of the editor
+      // adding class to add colors to p tag
+      const entryDescription = $("<p>");
+      entryDescription.addClass("text-dark");
 
-          const $divContent = entryDescription.append(trimmedEntryBody).appendTo($cardBody);
+      //cut down entry.body to 50 characters?
+      const maxShown = 50;
+      const trimmedEntryBody = entry.body.substring(0, maxShown);
 
-          $cardBody.appendTo($divCollapse);
+      const $divContent = entryDescription.append(trimmedEntryBody).appendTo($cardBody);
 
-          //build the card content
-          $card.append($cardheader, $divCollapse).appendTo("#entries-accordion");
+      $cardBody.appendTo($divCollapse);
 
-        });
-      });
+      //build the card content
+      $card.append($cardheader, $divCollapse).appendTo("#entries-accordion");
 
-/* THIS IS THE DELETED JOURNALS AREA */
+    });
+  });
 
-// on load display all deleted entries on the modal area
-$.ajax({
-  url: "/api/journals/deleted/" + userId,
-  method: "GET"
-}).then(deletedJournals => {
-  console.log(`Deleted journals here.`);
-  console.log(deletedJournals);
+  /* THIS IS THE DELETED JOURNALS AREA */
 
-  deletedJournals.forEach((journal, index) => {
-  
-          const $card = $("<card>");
+  // on load display all deleted entries on the modal area
+  $.ajax({
+    url: "/api/journals/deleted/" + userId,
+    method: "GET"
+  }).then(deletedJournals => {
+    //console.log(deletedJournals);
 
-          //the header
-          const $cardheader = $(`<div class='card-header text-align' role='tab' id='heading${index+1}'>`);
-          //div row to wrap the line : title dates actions
-          //inside the header we will have a row with 3colums 2-8-2
-          const $row = $("<div class='row align-items-center'>");
-          const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
-          const $colDates = $("<div class='col-8 d-flex align-content-start text-dark'>");
-          const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
+    deletedJournals.forEach((journal, index) => {
 
-          //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
-          //button to make the title clikable
-          const $buttonTitle = $(
-            `<a data-parent='#deletedJournals-accordion' href='#deletedjournal${index+1}' 
+      const $card = $("<card>");
+
+      //the header
+      const $cardheader = $(`<div class='card-header text-align' role='tab' id='heading${index+1}'>`);
+      //div row to wrap the line : title dates actions
+      //inside the header we will have a row with 3colums 2-8-2
+      const $row = $("<div class='row align-items-center'>");
+      const $colTitle = $("<div class='col-2 d-flex align-content-start'>");
+      const $colDates = $("<div class='col-8 d-flex align-content-start text-dark'>");
+      const $colActions = $("<div class='col-2 d-flex justify-content-end'>");
+
+      //inline style to be removed later #collapse-link {color: black; font-weight: bold; text-decoration: none;
+      //button to make the title clikable
+      const $buttonTitle = $(
+        `<a data-parent='#deletedJournals-accordion' href='#deletedjournal${index+1}' 
                             data-toggle='collapse' data-target='#deletedjournal${index+1}'
                             aria-expanded='true' aria-controls='deletedjournal${index+1}'
                             style='color: black; font-weight: bold; text-decoration: none'
                             >`
-          ).text(journal.title).appendTo($colTitle);
+      ).text(journal.title).appendTo($colTitle);
 
-          //build the line //build the line: entry 1 created: modified edit and suppress icon 
-          const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
-          const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(journal.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
-          const $spanLastAccess = $("<span class='mx-2'>").text("Last access :").appendTo($colDates);
-          const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
-         
-          const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
+      //build the line //build the line: entry 1 created: modified edit and suppress icon 
+      const $spanCreated = $("<span class='mr-2'>").text("Created :").appendTo($colDates);
+      const $spanCreatedContent = $("<span style='font-weight: bold'>").text(` ${moment(journal.createdAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
+      const $spanLastAccess = $("<span class='mx-2'>").text("Last access :").appendTo($colDates);
+      const $spanLastAccessContent = $("<span style='font-weight: bold'>").text(`  ${moment(journal.updatedAt).format("ddd, MMM Do YYYY, h:mm a")}`).appendTo($colDates);
 
-          //append them to the 
-          //$cardheader.append($buttonTitle, $spanCreated, $spanModified, $update, $delete);
-          $row.append($colTitle, $colDates, $colActions);
-          $cardheader.append($row);
+      const $delete = $("<span class='fas fa-trash-alt text-danger'>").appendTo($colActions);
 
-          //the body
-          const $divCollapse = $(
-            `<div id='deletedjournal${index+1}' aria-labelledby='heading${index+1}'  role='tabpanel' data-parent='#deletedJournals-accordion'>`);
+      //append them to the 
+      //$cardheader.append($buttonTitle, $spanCreated, $spanModified, $update, $delete);
+      $row.append($colTitle, $colDates, $colActions);
+      $cardheader.append($row);
 
-          //quick check to determine if it should be a class collapse show or not        
-          (index === 0) ? $divCollapse.addClass("blue-grey lighten-5 collapse show"): $divCollapse.addClass("blue-grey lighten-5 collapse");
+      //the body
+      const $divCollapse = $(
+        `<div id='deletedjournal${index+1}' aria-labelledby='heading${index+1}'  role='tabpanel' data-parent='#deletedJournals-accordion'>`);
 
-          const $cardBody = $("<div class='card-body'>");
+      //quick check to determine if it should be a class collapse show or not        
+      (index === 0) ? $divCollapse.addClass("blue-grey lighten-5 collapse show"): $divCollapse.addClass("blue-grey lighten-5 collapse");
 
-          //adding a div to display the content of the editor
-          // adding class to add colors to p tag
-          const deletedJournalDescription = $("<p>");
-          deletedJournalDescription.addClass("text-dark");
+      const $cardBody = $("<div class='card-body'>");
 
-          const $divContent = deletedJournalDescription.append(journal.description).appendTo($cardBody);
+      //adding a div to display the content of the editor
+      // adding class to add colors to p tag
+      const deletedJournalDescription = $("<p>");
+      deletedJournalDescription.addClass("text-dark");
 
-          $cardBody.appendTo($divCollapse);
-          
-          //build the card content
-          $card.append($cardheader, $divCollapse).appendTo("#deletedJournals-accordion");
+      const $divContent = deletedJournalDescription.append(journal.description).appendTo($cardBody);
 
-        });
-      });
+      $cardBody.appendTo($divCollapse);
 
+      //build the card content
+      $card.append($cardheader, $divCollapse).appendTo("#deletedJournals-accordion");
 
+    });
+  });
 
 
 
-      
+
+
+
 }); //end of document.ready
