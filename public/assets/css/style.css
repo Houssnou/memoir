@@ -1,6 +1,5 @@
 /* I need to reoragnize this area by page first then class/id then alphabetically. ahhh */
 
-
 .sidenav {
   height: 100%;
   width: 160px;
@@ -106,10 +105,11 @@
 }
 
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 575.98px) {
   .entrySpan {
     display: none;
   }
+  
 }
 
 @media screen and (max-width: 576px) {
@@ -125,14 +125,18 @@
 
 }
 
-@media screen and (max-width: 876px) {
-  .hiddenAtSmall {
+@media screen and (max-width: 900px) {
+  .hiddenAtSmall2 {
     display: none;
   }
   #journalSideNav {
     display: none;
   }
 
+  #contentBody {
+    margin: 0% !important;
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 1137px) {
