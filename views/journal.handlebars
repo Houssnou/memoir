@@ -16,7 +16,8 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#accountModal">Account</a>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#faqModal">FAQ & Help</a>
-          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#deletedJournals">View deleted journals</a>
+          <a class="dropdown-item border-bottom" href="#" data-toggle="modal" data-target="#deletedJournals">View
+            deleted journals</a>
           <a class="dropdown-item" href="./">Logout</a> {{!-- MODAL HTML STARTS AROUND LINE 116 --}}
         </div>
       </li>
@@ -27,7 +28,7 @@
 
 <!-- SIDEBAR HERE -->
 <div class="container-fluid">
-  <div class="sidenav mdb-color" id="journalSideNav"
+  <div class="sidenav mdb-color" id="journalSideNav">
     <div class="container-fluid mb-5">
       <div class="font-weight-bold text-light">
         <br><br>
@@ -39,69 +40,35 @@
   <div class="container-fluid mt-3" id="contentBody">
     <div class="card blue-grey lighten-3" id="pageCard">
       <div id="pushJournalStuffLeft">
-      {{!-- row title with the button to create new row --}}
-      <div class="justify-content-center">
-        <div class="mx-4 my-4">
-          <div id="journal-title" class="list-group text-center">
-            <a button class="btn btn-mdb-color btn-block" id="create-journal" data-toggle="modal"
-              data-target="#addJournal-modal">ADD Journal</a>
-          </div>
-        </div>
-      </div>
-
-      {{!-- row accordion to list all journals with a the description --}}
-      <div class="justify-content-center">
-        <div class="mx-4">
-          <div class="list-group text-center text-white">
-            {{!-- Accordion --}}
-            <!--Accordion wrapper-->
-            <div class="accordion " id="journals-accordion" role="tablist" aria-multiselectable="true">
-
-
-              <!--/.Accordion wrapper-->
-              {{!-- End Accordion --}}
+        {{!-- row title with the button to create new row --}}
+        <div class="justify-content-center">
+          <div class="mx-4 my-4">
+            <div id="journal-title" class="list-group text-center">
+              <button class="btn btn-mdb-color btn-block" id="create-journal" data-toggle="modal"
+                data-target="#addJournal-modal">ADD Journal</button>
             </div>
           </div>
         </div>
-
+        {{!-- row accordion to list all journals with a the description --}}
+        <div class="justify-content-center">
+          <div class="mx-4">
+            <div class="list-group text-center text-white">
+              {{!-- Accordion --}}
+              <!--Accordion wrapper-->
+              <div class="accordion " id="journals-accordion" role="tablist" aria-multiselectable="true">
+                <!--/.Accordion wrapper-->
+                {{!-- End Accordion --}}
+              </div>
+            </div>
+          </div>
+        </div>
         {{!-- modal form to add a new journal --}}
-        <div class="modal fade" id="addJournal-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-          aria-hidden="true">
-
-          <div class="modal-dialog modal-lg" role="document">
-
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title w-100" id="modalFaqTitle">Add a new journal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="md-form mb-5">
-                  <input type="text" id="title-input" class="form-control validate">
-                  <label class="font-weight-bold" for="title-input">Title</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="description-input" class="form-control validate">
-                  <label class="font-weight-bold" for="description-input">Description</label>
-                </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                <button class="btn btn-deep-orange" id="save-journal"> Save Journal</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-      </div>{{!-- HERE --}}
     </div>
-  </div>
+  </div>{{!-- HERE --}}
 </div>
+
+
 
 <!-- Footer -->
 <footer class="page-footer font-small stylish-color-dark fixed-bottom">
@@ -111,13 +78,41 @@
   <!-- Copyright -->
 </footer>
 
+{{!-- Modal NEW JOURNAL --}}
+<div class="modal fade" id="addJournal-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="modalFaqTitle">Add a new journal</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <input type="text" id="title-input" class="form-control validate">
+          <label class="font-weight-bold" for="title-input">Title</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="description-input" class="form-control validate">
+          <label class="font-weight-bold" for="description-input">Description</label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button class="btn btn-deep-orange" id="save-journal"> Save Journal</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- End NEW JOURNAL MODAL --}}
+
 {{!-- 🤔🤔🤔🤔🤔🤔🤔🤔THIS IS WHERE I THREW ALL THE MODAL STUFF 🤔🤔🤔🤔🤔🤔🤔🤔🤔--}}
-
-
-
 <!-- Account Modal -->
 <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
   <div class="modal-dialog modal-fluid" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -129,61 +124,57 @@
       <div class="modal-body">
         <div class="container">
           <!-- Extended material form grid -->
-          <div>
-            <!-- Grid row -->
-            <form class="md-form" id="post-form">
-              <div class="row">
-                <div class="col-4">
-                  {{!-- picture stuff --}}
-                  <div class="file-field">
-                    <div class="z-depth-1-half mb-4">
-                      <img class="img-fluid" alt="example placeholder" id="photo">
+
+          <!-- Grid row -->
+          <form class="md-form" id="post-form">
+            <div class="row">
+              <div class="col-4">
+                {{!-- picture stuff --}}
+                <div class="file-field">
+                  <div class="z-depth-1-half mb-4">
+                    <img class="img-fluid" alt="example placeholder" id="photo">
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="btn btn-mdb-color btn-rounded float-left">
+                      <span>Choose file</span>
+                      <input type="file" id="photo-update">
                     </div>
-                    <div class="d-flex justify-content-center">
-                      <div class="btn btn-mdb-color btn-rounded float-left">
-                        <span>Choose file</span>
-                        <input type="file" id="photo-update">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-8">
-                  <div class="md-form mb-5">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <input type="email" id="email-input" class="form-control" disabled>
-                    <label for="inputDisabledEx" class="disabled"></label>
-                  </div>
-
-                  <div class="md-form mb-5">
-                    <i class="fas fa-user prefix grey-text"></i>
-                    <input type="text" id="firstName-input" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="firstName-input"></label>
-                  </div>
-
-                  <div class="md-form mb-5">
-                    <i class="fas fa-user prefix grey-text"></i>
-                    <input type="text" id="lastName-input" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="lastName-input"></label>
-                  </div>
-                  <div class="md-form mb-4">
-                    <i class="fas fa-lock prefix grey-text"></i>
-                    <input type="password" id="pass-input" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="pass-input">Your password</label>
-                  </div>
-
-                  <div class="md-form mb-4">
-                    <i class="fas fa-lock prefix grey-text" style="visibility:hidden"></i>
-                    <input type="password" id="passConfirm-input" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="passConfirm-input">Confirm password</label>
                   </div>
                 </div>
               </div>
+              <div class="col-8">
+                <div class="md-form mb-5">
+                  <i class="fas fa-envelope prefix grey-text"></i>
+                  <input type="email" id="email-input" class="form-control" disabled>
+                  <label for="inputDisabledEx" class="disabled"></label>
+                </div>
 
-              <!-- Extended material form grid -->
-          </div>
+                <div class="md-form mb-5">
+                  <i class="fas fa-user prefix grey-text"></i>
+                  <input type="text" id="firstName-input" class="form-control validate">
+                  <label data-error="wrong" data-success="right" for="firstName-input"></label>
+                </div>
 
-          <!-- END ACCUONT MODAL -->
+                <div class="md-form mb-5">
+                  <i class="fas fa-user prefix grey-text"></i>
+                  <input type="text" id="lastName-input" class="form-control validate">
+                  <label data-error="wrong" data-success="right" for="lastName-input"></label>
+                </div>
+                <div class="md-form mb-4">
+                  <i class="fas fa-lock prefix grey-text"></i>
+                  <input type="password" id="pass-input" class="form-control validate">
+                  <label data-error="wrong" data-success="right" for="pass-input">Your password</label>
+                </div>
+
+                <div class="md-form mb-4">
+                  <i class="fas fa-lock prefix grey-text" style="visibility:hidden"></i>
+                  <input type="password" id="passConfirm-input" class="form-control validate">
+                  <label data-error="wrong" data-success="right" for="passConfirm-input">Confirm password</label>
+                </div>
+              </div>
+            </div>
+            <!-- Extended material form grid -->
+            <!-- END ACCUONT MODAL -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -211,9 +202,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <h4>FAQ stuff here</h4>
-        <p>Q: What is this?</p>
-        <p>A: Stuff</p>
+        <h4>FAQ</h4>
+        <p>Q: How do I become a part of your Personal Journal?</p>
+        <p>A: It's easy! At the sign in page complete the required information, where you will create your            login profile and then click sign up and then login.</p>
+        <p>Q: What is your signup fees?</p>
+        <p>A: Signing up is free for everyone to become a part of the journal.</p>
+        <p>Q: Do you have a tutorial?</p>
+        <p>A: No, we don't, it's very easy to use.  A tutorial is not needed as its self explainatory,and you         can basically work yourself through every steps in less that 5mins.</p>
+        <p>Q: How safe is my personal information and how is it protected?</p>
+        <p>A: Your personal information is very safe. There are multiple layers of security and authentication.       No two users can log in with the same signup information.</p>
+
+        <h4>HELP</h4>
+        <p> If you need to reach us:</p>
+        <p>Contact admin at admin@gmail.com.<br>Call 1-866-Admi.<br/>Or write to P-Journal<br/> 9098 Way Drive,<br/> RedWood City, CA</br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -299,7 +300,8 @@
 
 {{!-- VIEW DELETED JOURNALS --}}
 
-<div class="modal fade" id="deletedJournals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletedJournals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
 
   <div class="modal-dialog modal-fluid" role="document">
 
