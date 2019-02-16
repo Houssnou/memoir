@@ -82,7 +82,11 @@ module.exports = {
           id: req.params.id
         }
       }).then(result => {
-        res.json(result)
+        return db.Users.findById(req.params.id)
+      })
+      .then(result => {
+        console.log(result);
+        res.json(result);
       })
       .catch(err => {
         console.log("Change Password Error: " + err);

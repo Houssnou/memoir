@@ -10,12 +10,11 @@ $(document).ready(() => {
   userName = localStorage.getItem("userName");
   photoUrl = localStorage.getItem("photoUrl");
 
-  console.log(userId, userName);
-
+  //display user name
   $("#userName").text(userName);
   //display user photo 
-  $("#user-avatar").attr("src", photoUrl).width(30); 
-  $("#user-avatar").attr("src", photoUrl).height(30);    
+  $("#user-avatar").attr("src", photoUrl).width(30);
+  $("#user-avatar").attr("src", photoUrl).height(30);
 
 
   //on load display all users journals
@@ -218,12 +217,49 @@ $(document).ready(() => {
     //get the entry data back as an object
     const entry = $(this).data("data-entry");
 
-    //console.log(entry);
+    console.log("----");
+    console.log(entry.title);
+    console.log(entry.body);
+    console.log(entry.Journal.title);
+    console.log("----");
 
     let doc = new jsPDF();
-    doc.text(entry.title, 10, 10);
-    doc.text(entry.createdAt + " " + entry.updatedAt, 20, 10);
-    doc.text(entry.body, 40, 10);
+
+    /* doc.fromHTML($('.ck').html(), 15, 15, {
+      'width': 400
+    });
+    doc.save('myPdf.pdf'); */
+
+    doc.setFontSize(20);
+    doc.setFont("courier");
+    doc.setFontType("bold");
+    doc.text(10, 20, entry.title);
+
+    doc.setFontSize(12);
+    doc.text(10, 30, "Created on: " + moment(entry.createdAt).format("lll"));
+    doc.text(10, 40, "From journal: " + entry.Journal.title);
+
+    //tricky one
+    const text = entry.body;
+    const textClean = text.replace(/(<([p/p;^>]+)>)/ig, "");
+    let res = textClean.split(".");
+
+    let lineNumber = 60;
+    res.forEach(line => {
+      doc.setFontSize(14);
+      doc.text(10, lineNumber, line);
+      lineNumber += 10;
+    });
+
+    //set the properties
+    doc.setProperties({
+      title: entry.title,
+      subject: "Journal Entry",
+      author: 'User',
+      keywords: 'generated, javascript, web 2.0, ajax',
+      creator: 'User 1'
+    });
+    //save the file
     doc.save('entry.pdf');
   });
 
@@ -231,7 +267,7 @@ $(document).ready(() => {
 
 
 
-/* ADD ACTIVE CLASS */
-$(".entryTitleArea").addClass("active");
+  /* ADD ACTIVE CLASS */
+  $(".entryTitleArea").addClass("active");
 
 });
