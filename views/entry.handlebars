@@ -1,12 +1,12 @@
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark lighten-1 sticky-top">
-  <a class="navbar-brand" href="./journals">Home</a>
+  <a class="navbar-brand navHome" href="./journals">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-    <ul class="navbar-nav ml-auto nav-flex-icons">
+    <ul class="navbar-nav nav-flex-icons">
       <li class="nav-item text-white pt-3">Hi <span id="userName"></span></li>
       <li class="nav-item avatar dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
@@ -38,17 +38,17 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid mt-3" id="contentBody">
-    <div class="card blue-grey lighten-3" id="pageCard">
+  <div class="container-fluid mt-3" id="contentBodyEntry">
+    <div class="card blue-grey lighten-3" id="pageCardEntries">
       <div class="row">
-        <div class="col-sm-3 col-3" id="listedEntries">
+        <div class="col-sm-11 col-lg-3" id="listedEntries">
           <a button class="btn btn-mdb-color btn-block my-4 mx-2" id="create-entry">ADD Entry</a>
           <div id="list-entries" class="ml-2 list-group w-100 text-center">
             {{!-- list of entries generated dynamically --}}
           </div>
         </div>
 
-        <div class="col-sm-8 col-9" id="newEntry">
+        <div class="col-sm-11 col-lg-8" id="newEntry">
           {{!-- new entry form --}}
           <form style="" id="entry-form">
             <div class="card grey lighten-2 mt-3" id="entry-card">
@@ -64,9 +64,9 @@
                     <span style="font-weight: bold">Updated on: <span id="updatedAt"></span></span>
                   </div>
                   <div class="col-2">
-                    <i class="fas fa-save"></i>
-                    <i class="far fa-file-pdf"></i>
-                    <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-modal"></i>
+                    <button class="fas fa-save"></button>
+                    <button class="far fa-file-pdf"></button>
+                    <button class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-modal"></button>
                   </div>
                 </div>
                 <div class="row">
@@ -208,9 +208,9 @@
     <div class="modal-dialog modal-lg" role="document">
 
 
-      <div class="modal-content">
+      <div class="modal-content faqHelpModal">
         <div class="modal-header">
-          <h4 class="modal-title w-100" id="modalFaqTitle">FAQ</h4>
+          <h4 class="modal-title w-100" id="modalFaqTitle">Welcome to our FAQ and Help Section</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

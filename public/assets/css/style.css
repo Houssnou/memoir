@@ -48,6 +48,17 @@ body, html {
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
+.nav-flex-icons {
+  margin-left: auto;
+}
+
+.faqHelpModal {
+    background-color: coral;
+    display: inline-block;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 2px 4px;
+}
 
 #listedEntries {
   padding-right: 0%; 
@@ -92,8 +103,19 @@ body, html {
   width: 89%;
   opacity: .85;
 }
+#contentBodyEntry{
+  margin-left: 11%;
+  width: 89%;
+  opacity: .85;
+}
 
 #pageCard{
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#pageCardEntries{
   height: 600px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -127,13 +149,6 @@ body, html {
 }
 
 
-@media screen and (max-width: 575.98px) {
-  .entrySpan {
-    display: none;
-  }
-  
-}
-
 @media screen and (max-width: 576px) {
   
  .container-fluid#contentBody {
@@ -143,6 +158,17 @@ body, html {
 
   #journalSideNav {
     display: none;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .sidenav {
+    width: 130px;
+  }
+  #pageCardEntries {
+    width: 75%;
+    margin: auto;
   }
 
 }
@@ -159,6 +185,18 @@ body, html {
     margin: 0% !important;
     width: 100% !important;
   }
+  #contentBodyEntry {
+    width: 84% !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .nav-flex-icons {
+    margin-left: 5%;
+  }
+  .navHome {
+    margin-left: 5%;
+  }
 }
 
 @media screen and (max-width: 1137px) {
@@ -170,6 +208,13 @@ body, html {
 @media screen and (max-width: 1300px) {
 
   .container-fluid#contentBody {
+    margin: auto;
+    margin-left: 18%;
+    padding: auto;
+    width: 75%;
+  }
+  
+  #contentBodyEntry {
     margin: auto;
     margin-left: 18%;
     padding: auto;
