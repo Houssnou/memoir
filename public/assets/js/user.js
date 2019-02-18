@@ -17,12 +17,33 @@ $(document).ready(function () {
   $('#post-form').on('submit', function (e) {
     e.preventDefault();
 
+    //check if password exists then make user that the 2 inputs are equal
+
     //build an object of the user infos
     const userUpdate = {
       firstName: $("#firstName-input").val().trim(),
       lastName: $("#lastName-input").val().trim()
+     // password: $("#pass-input").val().trim()
     };
-    console.log(userUpdate);
+    /* const confirmPassword = $("#passConfirm-input").val().trim();
+
+    //console.log(userUpdate);
+    // client side registration 
+    // min 6 charcters long
+    if (userUpdate.password.length < 6) {
+      alert(`Password requirements do not match. Please have a minimum length of 6 characters.`);
+      return false;
+    } else {
+      true;
+    }
+
+    // before ajax call is made do a client side verfication to make sure both password inputs are the same
+    if (userUpdate.password === confirmPassword) {
+      true;
+    } else {
+      alert("Passwords do not match");
+      return false;
+    } */
 
     // create formData object (needed for sending image)
     const form = new FormData();
@@ -51,7 +72,8 @@ $(document).ready(function () {
         //display user photo 
         $("#user-avatar").attr("src", data.photo).width(30);
         $("#user-avatar").attr("src", data.photo).height(30);
-
+        //set the local storage data 
+        localStorage.setItem("photoUrl", data.photo);
       });
   });
 
