@@ -53,7 +53,6 @@ body, html {
 }
 
 .faqHelpModal {
-    background-color: coral;
     display: inline-block;
     border-radius: 50px;
     cursor: pointer;
