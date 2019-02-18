@@ -76,7 +76,7 @@ module.exports = {
   },
   //update a user /:id
   updateAccount: (req, res) => {
-    console.log(req.body);
+   // console.log(req.body);
     db.Users.update(req.body, {
         where: {
           id: req.params.id
@@ -86,6 +86,7 @@ module.exports = {
       })
       .then(result => {
         console.log(result);
+       // req.user.photo = results.photo;
         res.json(result);
       })
       .catch(err => {
